@@ -9,6 +9,17 @@ import { RouterLink } from '@angular/router';
     <div class="container">
       <h1>Angular Performance Examples</h1>
 
+      <div class="intro-card">
+        <h2>🎓 Introduction</h2>
+        <p>Start here to learn about the tools we'll use to track component lifecycle:</p>
+        <ul>
+          <li>Understanding component lifecycle</li>
+          <li>Using the LifecycleLogger directive</li>
+          <li>Tracking component creation and destruction</li>
+        </ul>
+        <a routerLink="/intro" class="btn">Start Here</a>
+      </div>
+
       <div class="cards">
         <div class="card problematic">
           <h2>❌ Problematic Version</h2>
@@ -18,7 +29,7 @@ import { RouterLink } from '@angular/router';
             <li>Multiple DNS lookups</li>
             <li>Inefficient NgFor usage</li>
           </ul>
-          <a routerLink="/problematic" class="btn">View Problematic Version</a>
+          <a routerLink="/step-1" class="btn">View Problematic Version</a>
         </div>
 
         <div class="card optimized">
@@ -29,7 +40,7 @@ import { RouterLink } from '@angular/router';
             <li>Single CDN domain</li>
             <li>Efficient NgFor with trackBy</li>
           </ul>
-          <a routerLink="/optimized" class="btn">View Optimized Version</a>
+          <a routerLink="/step-2" class="btn">View Optimized Version</a>
         </div>
       </div>
     </div>
@@ -39,6 +50,13 @@ import { RouterLink } from '@angular/router';
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
+    }
+    .intro-card {
+      background-color: #ebf8ff;
+      border: 1px solid #90cdf4;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
     }
     .cards {
       display: grid;

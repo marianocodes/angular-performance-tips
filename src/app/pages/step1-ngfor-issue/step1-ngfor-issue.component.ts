@@ -27,9 +27,11 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
         <div class="code-example">
           <h3>Problematic Code:</h3>
           <pre><code>
-&lt;div *ngFor="let card of cards"&gt;
-  &lt;app-card-item [card]="card"&gt;&lt;/app-card-item&gt;
-&lt;/div&gt;
+  &lt;app-card-item
+    *ngFor="let card of cards"
+    [card]="card"
+    appLifecycleLogger
+  &gt;&lt;/app-card-item&gt;
           </code></pre>
         </div>
       </div>
