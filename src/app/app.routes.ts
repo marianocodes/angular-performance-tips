@@ -24,5 +24,13 @@ export const routes: Routes = [
   {
     path: 'step-4',
     loadComponent: () => import('./pages/step4-dns-fixed/step4-dns-fixed.component').then(m => m.Step4DnsFixedComponent)
+  },
+  {
+    path: 'step-5',
+    loadComponent: () => import('./pages/step5-cls-issue/step5-cls-issue.component').then(m => m.Step5ClsIssueComponent)
+  },
+  {
+    path: 'step-6',
+    loadComponent: () => import('./pages/step6-cls-fixed/step6-cls-fixed.component').then(m => m.Step6ClsFixedComponent)
   }
 ];
