@@ -37,7 +37,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
       </div>
 
       <div class="demo">
-        <button (click)="replaceCards()" class="btn">Add Replace cards </button>
+        <button (click)="replaceCards()" class="btn">Replace cards </button>
         <button (click)="addCard()" class="btn">Add New Card</button>
 
         <div class="cards-container">
