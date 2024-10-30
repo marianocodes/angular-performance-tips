@@ -32,5 +32,13 @@ export const routes: Routes = [
   {
     path: 'step-6',
     loadComponent: () => import('./pages/step6-cls-fixed/step6-cls-fixed.component').then(m => m.Step6ClsFixedComponent)
+  },
+  {
+    path: 'step-7',
+    loadComponent: () => import('./pages/step7-image-size-issue/step7-image-size-issue.component').then(m => m.Step7ImageSizeIssueComponent)
+  },
+  {
+    path: 'step-8',
+    loadComponent: () => import('./pages/step8-image-size-fixed/step8-image-size-fixed.component').then(m => m.Step8ImageSizeFixedComponent)
   }
 ];

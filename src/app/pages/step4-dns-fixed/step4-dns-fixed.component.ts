@@ -15,7 +15,7 @@ import { TestDataService } from '../../services/test-data.service';
         <h1>Step 4: DNS Lookups Fixed</h1>
         <nav>
           <a routerLink="/step-3">← Previous</a>
-          <a routerLink="/" class="next">Home</a>
+          <a routerLink="/step-5" class="next">Next Step →</a>
         </nav>
       </header>
 

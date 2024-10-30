@@ -1,68 +1,81 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Card } from '../../models/card.interface';
-import { TestDataService } from '../../services/test-data.service';
 
 @Component({
-  selector: 'app-step5-cls-issue',
+  selector: 'app-step7-image-size-issue',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, NgOptimizedImage],
   template: `
     <div class="container">
       <header class="header">
-        <h1>Step 5: Layout Shift Issues</h1>
+        <h1>Step 7: Image Size Issues</h1>
         <nav>
-          <a routerLink="/step-4">← Previous</a>
-          <a routerLink="/step-6" class="next">Next Step →</a>
+          <a routerLink="/step-6">← Previous</a>
+          <a routerLink="/step-8" class="next">Next Step →</a>
         </nav>
       </header>
 
       <div class="explanation">
         <h2>The Problem</h2>
         <p>
-          When images load without specified dimensions, they cause layout shifts as the browser
-          doesn't know how much space to reserve. This affects the Cumulative Layout Shift (CLS) metric.
+          Loading full-size images regardless of the device's screen size wastes bandwidth
+          and slows down page load. Check the Network tab to see the actual image sizes being downloaded.
         </p>
 
         <div class="performance-impact">
           <h3>Issues:</h3>
           <ul>
-            <li>Content jumps as images load</li>
-            <li>Poor user experience</li>
-            <li>High CLS score (bad for Core Web Vitals)</li>
-            <li>No image optimization</li>
+            <li>Mobile devices download desktop-sized images</li>
+            <li>Unnecessary bandwidth usage</li>
+            <li>Slower page load times</li>
+            <li>Higher data costs for users</li>
           </ul>
         </div>
 
         <div class="code-example">
           <h3>Problematic Code:</h3>
           <pre><code>
-&lt;div class="card"&gt;
-  &lt;img
-    [src]="card.imageUrl"
-    [alt]="card.title"
-  &gt;
-  &lt;h3&gt;{{ '{{' }} card.title {{ '}}' }}&lt;/h3&gt;
-&lt;/div&gt;
+&lt;img
+  ngSrc="https://picsum.photos/1080/720"
+  width="1080"
+  height="720"
+  alt="Large image"
+/&gt;
           </code></pre>
         </div>
       </div>
 
       <div class="demo">
         <p class="instructions">
-          Watch how the layout shifts as images load. Try scrolling while images are loading
-          to experience the poor user experience. Open DevTools Performance tab and look for layout shifts.
+          Open Chrome DevTools, go to the Network tab, and check the size of images being downloaded.
+          Try resizing your browser window - the same large images are always downloaded.
         </p>
 
+        <div class="image-container">
+          <img
+            ngSrc="https://picsum.photos/1080/720"
+            width="1080"
+            height="720"
+            alt="Large image"
+            priority="true"
+          >
+          <p class="image-info">
+            This image is always 1080x720 pixels, even on mobile devices.
+            Check the Network tab to see its size.
+          </p>
+        </div>
+
         <div class="cards-container">
-          @for (card of cards; track card.id) {
+          @for (i of [1, 2, 3, 4]; track i) {
             <div class="card">
               <img
-                [src]="card.imageUrl"
-                [alt]="card.title"
+                ngSrc="https://picsum.photos/1080/720?random={{i}}"
+                width="1080"
+                height="720"
+                alt="Card image {{i}}"
               >
-              <h3>{{ card.title }}</h3>
+              <p>Card {{i}}</p>
             </div>
           }
         </div>
@@ -123,9 +136,26 @@ import { TestDataService } from '../../services/test-data.service';
       border-radius: 4px;
       margin: 1rem 0;
     }
+    .image-container {
+      margin: 2rem 0;
+      border: 1px solid #e2e8f0;
+      padding: 1rem;
+      border-radius: 4px;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .image-info {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #ebf8ff;
+      border-radius: 4px;
+    }
     .cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1rem;
       margin-top: 1rem;
     }
@@ -140,15 +170,6 @@ import { TestDataService } from '../../services/test-data.service';
       height: auto;
       border-radius: 4px;
     }
-    .card h3 {
-      margin: 0.5rem 0;
-    }
   `]
 })
-export class Step5ClsIssueComponent {
-  cards: Card[] = [];
-
-  constructor(private testDataService: TestDataService) {
-    this.cards = this.testDataService.generateCardsWithSingleDomain(20);
-  }
-}
+export class Step7ImageSizeIssueComponent {}

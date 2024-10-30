@@ -64,8 +64,8 @@ import { TestDataService } from '../../services/test-data.service';
             <div class="card">
               <img
                 [ngSrc]="card.imageUrl"
-                width="1080"
-                height="720"
+                width="320"
+                height="150"
                 [alt]="card.title"
                 [priority]="card.id <= 4"
               >
