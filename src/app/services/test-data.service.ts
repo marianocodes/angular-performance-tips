@@ -8,31 +8,31 @@ export class TestDataService {
   private imageSources = [
     {
       domain: 'placehold.co',
-      getUrl: (id: number) => `https://placehold.co/320x150?text=Card${id}`
+      getUrl: (id: number) => `https://placehold.co/1080x720?text=Card${id}`
     },
     {
       domain: 'picsum.photos',
-      getUrl: (id: number) => `https://picsum.photos/320/150?random=${id}`
+      getUrl: (id: number) => `https://picsum.photos/1080/720?random=${id}`
     },
     {
       domain: 'dummyimage.com',
-      getUrl: (id: number) => `https://dummyimage.com/320x150/000/fff&text=Card${id}`
+      getUrl: (id: number) => `https://dummyimage.com/1080x720/000/fff&text=Card${id}`
     },
     {
       domain: 'placekitten.com',
-      getUrl: (id: number) => `https://placekitten.com/320/150?image=${id}`
+      getUrl: (id: number) => `https://placekitten.com/1080/720?image=${id}`
     },
     {
       domain: 'loremflickr.com',
-      getUrl: (id: number) => `https://loremflickr.com/320/150?lock=${id}`
+      getUrl: (id: number) => `https://loremflickr.com/1080/720?lock=${id}`
     },
     {
       domain: 'via.placeholder.com',
-      getUrl: (id: number) => `https://via.placeholder.com/320x150?text=Card${id}`
+      getUrl: (id: number) => `https://via.placeholder.com/1080x720?text=Card${id}`
     },
     {
       domain: 'pravatar.cc',
-      getUrl: (id: number) => `https://i.pravatar.cc/320?img=${id}`
+      getUrl: (id: number) => `https://i.pravatar.cc/1080/720?img=${id}`
     }
   ];
 
@@ -49,7 +49,7 @@ export class TestDataService {
     return Array.from({ length: count }, (_, i) => ({
       id: i + 1,
       title: `Card ${i + 1}`,
-      imageUrl: `https://picsum.photos/320/150?random=${i + 1}`
+      imageUrl: `https://picsum.photos/1080/720?random=${i + 1}`
     }));
   }
 }
