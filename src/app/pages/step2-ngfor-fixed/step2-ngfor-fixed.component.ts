@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CardItemComponent } from '../../components/card-item/card-item.component';
 import { Card } from '../../models/card.interface';
+import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.directive';
 
 @Component({
   selector: 'app-step2-ngfor-fixed',
   standalone: true,
-  imports: [CommonModule, RouterLink, CardItemComponent],
+  imports: [CommonModule, RouterLink, CardItemComponent, LifecycleLoggerDirective],
   template: `
     <div class="container">
       <header class="header">
@@ -23,28 +24,29 @@ import { Card } from '../../models/card.interface';
         <p>By using trackBy, Angular can track which items changed and only update those specific elements.
            Notice in the console that existing components are not recreated when adding new cards.</p>
 
+        <p>Note: we also removed the *ngFor directive and replaced it with &#64;for.</p>
+
         <div class="code-example">
           <h3>Fixed Code:</h3>
           <pre><code>
-&lt;div *ngFor="let card of cards; trackBy: trackByFn"&gt;
-  &lt;app-card-item [card]="card"&gt;&lt;/app-card-item&gt;
-&lt;/div&gt;
-
-trackByFn(index: number, card: Card): number {{ '{' }}
-  return card.id;
+&lt;&#64;for (card of cards; track card.id) {{ '{' }}
+  &lt;app-card-item [card]="card" appLifecycleLogger&gt;&lt;/app-card-item&gt;
 {{ '}' }}
           </code></pre>
         </div>
       </div>
 
       <div class="demo">
+        <button (click)="replaceCards()" class="btn">Replace cards </button>
         <button (click)="addCard()" class="btn">Add New Card</button>
 
         <div class="cards-container">
-          <app-card-item
-            *ngFor="let card of cards; trackBy: trackByFn"
-            [card]="card"
-          ></app-card-item>
+          @for (card of cards; track card.id) {
+            <app-card-item
+              [card]="card"
+              appLifecycleLogger
+            />
+          }
         </div>
       </div>
     </div>
@@ -120,6 +122,11 @@ export class Step2NgforFixedComponent {
       id: 2,
       title: 'Card 2',
       imageUrl: 'https://picsum.photos/200/200?random=2'
+    },
+    {
+      id: 3,
+      title: 'Card 3',
+      imageUrl: 'https://picsum.photos/200/200?random=3'
     }
   ];
 
@@ -134,5 +141,25 @@ export class Step2NgforFixedComponent {
       imageUrl: `https://picsum.photos/200/200?random=${this.cards.length + 1}`
     };
     this.cards = [...this.cards, newCard];
+  }
+
+  replaceCards() {
+    this.cards = [
+      {
+        id: 1,
+        title: 'Card 1',
+        imageUrl: 'https://picsum.photos/200/200?random=1'
+      },
+      {
+        id: 2,
+        title: 'Card 2',
+        imageUrl: 'https://picsum.photos/200/200?random=2'
+      },
+      {
+        id: 3,
+        title: 'Card 3 - It works now',
+        imageUrl: 'https://picsum.photos/200/200?random=3'
+      }
+    ];
   }
 }
