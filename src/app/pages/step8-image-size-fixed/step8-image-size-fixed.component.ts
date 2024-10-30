@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
         <h1>Step 8: Responsive Images with srcset</h1>
         <nav>
           <a routerLink="/step-7">← Previous</a>
-          <a routerLink="/" class="next">Home</a>
+          <a routerLink="/step-9" class="next">Next Step →</a>
         </nav>
       </header>
 

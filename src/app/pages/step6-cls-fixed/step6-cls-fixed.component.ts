@@ -14,7 +14,7 @@ import { TestDataService } from '../../services/test-data.service';
         <h1>Step 6: Layout Shifts Fixed</h1>
         <nav>
           <a routerLink="/step-5">← Previous</a>
-          <a routerLink="/" class="next">Home</a>
+          <a routerLink="/step-7" class="next">Next Step →</a>
         </nav>
       </header>
 

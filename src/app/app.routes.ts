@@ -40,5 +40,21 @@ export const routes: Routes = [
   {
     path: 'step-8',
     loadComponent: () => import('./pages/step8-image-size-fixed/step8-image-size-fixed.component').then(m => m.Step8ImageSizeFixedComponent)
+  },
+  {
+    path: 'step-9',
+    loadComponent: () => import('./pages/step9-format-issue/step9-format-issue.component').then(m => m.Step9FormatIssueComponent)
+  },
+  {
+    path: 'step-10',
+    loadComponent: () => import('./pages/step10-format-fixed/step10-format-fixed.component').then(m => m.Step10FormatFixedComponent)
+  },
+  {
+    path: 'step-11',
+    loadComponent: () => import('./pages/step11-template-function-issue/step11-template-function-issue.component').then(m => m.Step11TemplateFunctionIssueComponent)
+  },
+  {
+    path: 'step-12',
+    loadComponent: () => import('./pages/step12-template-function-fixed/step12-template-function-fixed.component').then(m => m.Step12TemplateFunctionFixedComponent)
   }
 ];
