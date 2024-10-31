@@ -17,7 +17,7 @@ import { CardsListComponent } from './cards-list.component';
         <h1>Step 14: Change Detection Fixed</h1>
         <nav>
           <a routerLink="/step-13">← Previous</a>
-          <a routerLink="/" class="next">Home</a>
+          <a routerLink="/step-15" class="next">Next Step →</a>
         </nav>
       </header>
 

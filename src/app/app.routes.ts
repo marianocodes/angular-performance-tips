@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { delayResolver } from './resolvers/delay.resolver';
 
 export const routes: Routes = [
   {
@@ -64,5 +65,27 @@ export const routes: Routes = [
   {
     path: 'step-14',
     loadComponent: () => import('./pages/step14-change-detection-fixed/step14-change-detection-fixed.component').then(m => m.Step14ChangeDetectionFixedComponent)
+  },
+  {
+    path: 'step-15',
+    loadComponent: () => import('./pages/step15-defer-issue/step15-defer-issue.component').then(m => m.Step15DeferIssueComponent)
+  },
+  {
+    path: 'step-16',
+    loadComponent: () => import('./pages/step16-defer-fixed/step16-defer-fixed.component').then(m => m.Step16DeferFixedComponent)
+  },
+  {
+    path: 'step-17',
+    loadComponent: () => import('./pages/step17-hydration-issue/step17-hydration-issue.component').then(m => m.Step17HydrationIssueComponent),
+    resolve: {
+      delay: delayResolver
+    }
+  },
+  {
+    path: 'step-18',
+    loadComponent: () => import('./pages/step18-hydration-fixed/step18-hydration-fixed.component').then(m => m.Step18HydrationFixedComponent),
+    resolve: {
+      delay: delayResolver
+    }
   }
 ];
