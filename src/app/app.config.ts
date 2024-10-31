@@ -9,8 +9,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideClientHydration(
-      withIncrementalHydration()
-    )
+    // provideClientHydration(
+    //   withIncrementalHydration()
+    // )
   ]
 };

@@ -16,7 +16,7 @@ import { TestDataService } from '../../services/test-data.service';
         <h1>Step 18: Hydration Fixed</h1>
         <nav>
           <a routerLink="/step-17">← Previous</a>
-          <a routerLink="/" class="next">Home</a>
+          <a routerLink="/step-19" class="next">Next Step →</a>
         </nav>
       </header>
 
