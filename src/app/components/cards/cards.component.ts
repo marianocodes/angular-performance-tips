@@ -5,7 +5,7 @@ import { CardsService } from '../../services/cards.service';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss']
+  // styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent {
   cards: Card[] = [];
