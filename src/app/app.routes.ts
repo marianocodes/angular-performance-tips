@@ -56,5 +56,13 @@ export const routes: Routes = [
   {
     path: 'step-12',
     loadComponent: () => import('./pages/step12-template-function-fixed/step12-template-function-fixed.component').then(m => m.Step12TemplateFunctionFixedComponent)
+  },
+  {
+    path: 'step-13',
+    loadComponent: () => import('./pages/step13-change-detection-issue/step13-change-detection-issue.component').then(m => m.Step13ChangeDetectionIssueComponent)
+  },
+  {
+    path: 'step-14',
+    loadComponent: () => import('./pages/step14-change-detection-fixed/step14-change-detection-fixed.component').then(m => m.Step14ChangeDetectionFixedComponent)
   }
 ];
