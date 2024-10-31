@@ -1,5 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
-import { CommonModule, NgOptimizedImage, DecimalPipe } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Card } from '../../models/card.interface';
 import { TestDataService } from '../../services/test-data.service';
@@ -8,7 +8,7 @@ import { PriceFormatterPipe } from '../../pipes/price-formatter.pipe';
 @Component({
   selector: 'app-step12-template-function-fixed',
   standalone: true,
-  imports: [CommonModule, RouterLink, NgOptimizedImage, DecimalPipe, PriceFormatterPipe],
+  imports: [CommonModule, RouterLink, NgOptimizedImage, PriceFormatterPipe],
   template: `
     <div class="container">
       <header class="header">
