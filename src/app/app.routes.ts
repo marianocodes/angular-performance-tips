@@ -91,5 +91,12 @@ export const routes: Routes = [
   {
     path: 'step-19',
     loadComponent: () => import('./pages/step19-partial-hydration/step19-partial-hydration.component').then(m => m.Step19PartialHydrationComponent)
+  },
+  {
+    path: 'step-20',
+    loadComponent: () => import('./pages/step20-event-replay/step20-event-replay.component').then(m => m.Step20EventReplayComponent),
+    resolve: {
+      delay: delayResolver
+    }
   }
 ];

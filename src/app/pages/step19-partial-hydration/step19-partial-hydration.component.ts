@@ -16,7 +16,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
         <h1>Step 19: Partial Hydration</h1>
         <nav>
           <a routerLink="/step-18">← Previous</a>
-          <a routerLink="/step-19" class="next">Next Step →</a>
+          <a routerLink="/step-20" class="next">Next Step →</a>
         </nav>
       </header>
 
