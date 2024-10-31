@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Deployment
+
+firebase experiments:enable webframeworks
+firebase init
+https://blog.stackademic.com/demystifying-server-side-rendering-ssr-with-angular-and-firebase-hosting-028661a98558
+
+## Changes I made
+
+1. A few times fixed the formatting of the code examples.
+2. Added sizes to images
+3. Fixed the hydration issue in step 17 and 18
