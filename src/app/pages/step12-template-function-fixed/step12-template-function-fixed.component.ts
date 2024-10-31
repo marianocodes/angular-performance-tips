@@ -1,13 +1,14 @@
 import { Component, computed, signal } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage, DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Card } from '../../models/card.interface';
 import { TestDataService } from '../../services/test-data.service';
+import { PriceFormatterPipe } from '../../pipes/price-formatter.pipe';
 
 @Component({
   selector: 'app-step12-template-function-fixed',
   standalone: true,
-  imports: [CommonModule, RouterLink, NgOptimizedImage],
+  imports: [CommonModule, RouterLink, NgOptimizedImage, DecimalPipe, PriceFormatterPipe],
   template: `
     <div class="container">
       <header class="header">
@@ -38,17 +39,23 @@ import { TestDataService } from '../../services/test-data.service';
         <div class="code-example">
           <h3>Fixed Code:</h3>
           <pre><code>
-// Component class
-cards = signal&lt;Card[]&gt;(initialCards);
+// Create custom pipes
+Pipe({{ '{' }}
+  name: 'priceFormatter',
+  standalone: true
+{{ '}' }}
+export class PriceFormatterPipe implements PipeTransform {{ '{' }}
+  transform(value: number): string {{ '{' }}
+    return value.toFixed(2);
+  {{ '}' }}
+{{ '}' }}
 
-// Computed properties
-totalImages = computed(() => this.cards().length);
-aboveFoldImages = computed(() =>
-  this.cards().filter(card => card.id <= 4).length
-);
-
-// Template
-&lt;p&gt;Total Images: {{ '{' }} totalImages() {{ '}' }}&lt;/p&gt;
+// Use pipes in template
+&lt;div class="card"&gt;
+  &lt;h3&gt;{{ '{' }}card.title{{ '}' }}&lt;/h3&gt;
+  &lt;p&gt;Price: {{ '{' }}card.price | priceFormatter{{ '}' }}&lt;/p&gt;
+  &lt;p&gt;Discount: {{ '{' }}card.price * 0.1 | priceFormatter{{ '}' }}&lt;/p&gt;
+&lt;/div&gt;
           </code></pre>
         </div>
       </div>
@@ -56,12 +63,12 @@ aboveFoldImages = computed(() =>
       <div class="demo">
         <p class="instructions">
           Open the console and scroll the page or hover over elements.
-          Notice how the computed values are only recalculated when the cards array changes.
+          Notice how the pipes are only executed when their input values change.
         </p>
 
         <div class="stats">
           <p>Total Images: {{ totalImages() }}</p>
-          <p>Images Above Fold: {{ aboveFoldImages() }}</p>
+          <p>Total Value: {{ totalValue() | priceFormatter }}</p>
           <button (click)="addCard()" class="btn">Add New Card</button>
         </div>
 
@@ -83,7 +90,8 @@ aboveFoldImages = computed(() =>
               </picture>
               <div class="card-content">
                 <h3>{{ card.title }}</h3>
-                <p class="image-number">Image #{{ card.id }}</p>
+                <p class="price">Price: {{ card.price ? (card.price | priceFormatter) : 'N/A' }}</p>
+                <p class="discount">Discount: {{ card.price ? (card.price * 0.1 | priceFormatter) : 'N/A' }}</p>
               </div>
             </div>
           }
@@ -195,10 +203,21 @@ export class Step12TemplateFunctionFixedComponent {
   // Using signals for reactive state
   cards = signal<Card[]>([]);
 
+  totalValue = computed(() => {
+    console.count('totalValue computed');
+    return this.cards().reduce((sum, card) => sum + (card.price ?? 0), 0);
+  });
+
   constructor(private testDataService: TestDataService) {
     // Initialize the signal with data from service
-    this.cards.set(this.testDataService.generateCardsWithSingleDomain(50));
+    this.cards.set(
+      this.testDataService.generateCardsWithSingleDomain(50).map(card => ({
+        ...card,
+        price: Math.random() * 100
+      }))
+    );
   }
+
   // Computed values that automatically update when cards change
   totalImages = computed(() => {
     console.count('totalImages computed');
@@ -215,7 +234,8 @@ export class Step12TemplateFunctionFixedComponent {
     const newCard: Card = {
       id: currentCards.length + 1,
       title: `Image ${currentCards.length + 1}`,
-      imageUrl: `https://picsum.photos/400/300?random=${currentCards.length + 1}`
+      imageUrl: `https://picsum.photos/400/300?random=${currentCards.length + 1}`,
+      price: Math.random() * 100
     };
     this.cards.set([...currentCards, newCard]);
   }

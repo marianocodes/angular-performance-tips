@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage, DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Card } from '../../models/card.interface';
 import { TestDataService } from '../../services/test-data.service';
@@ -38,14 +38,22 @@ import { TestDataService } from '../../services/test-data.service';
         <div class="code-example">
           <h3>Problematic Code:</h3>
           <pre><code>
-&lt;div class="stats"&gt;
-  Total Images Loaded: {{ '{' }}getLoadedImagesCount(){{ '}' }}
+// Template with function calls
+&lt;div class="card"&gt;
+  &lt;h3&gt;{{ '{' }}card.title{{ '}' }}&lt;/h3&gt;
+  &lt;p&gt;Price: {{ '{' }}formatPrice(card.price){{ '}' }}&lt;/p&gt;
+  &lt;p&gt;Discount: {{ '{' }}calculateDiscount(card.price){{ '}' }}&lt;/p&gt;
 &lt;/div&gt;
 
-// This function is called on EVERY change detection
-getLoadedImagesCount(): number {{ '{' }}
-  console.count('getLoadedImagesCount called');
-  return this.cards.length;
+// Component class
+formatPrice(price: number): string {{ '{' }}
+  console.count('formatPrice called');
+  return price.toFixed(2);
+{{ '}' }}
+
+calculateDiscount(price: number): string {{ '{' }}
+  console.count('calculateDiscount called');
+  return (price * 0.1).toFixed(2);
 {{ '}' }}
           </code></pre>
         </div>
@@ -54,12 +62,13 @@ getLoadedImagesCount(): number {{ '{' }}
       <div class="demo">
         <p class="instructions">
           Open the console and scroll the page or hover over elements.
-          Notice how the count function is called repeatedly during normal interaction.
+          Notice how both the count functions and price formatting functions
+          are called repeatedly during normal interaction.
         </p>
 
         <div class="stats">
           <p>Total Images: {{ getLoadedImagesCount() }}</p>
-          <p>Images Above Fold: {{ getAboveFoldCount() }}</p>
+          <p>Total Value: {{ formatPrice(getTotalValue()) }}</p>
           <button (click)="addCard()" class="btn">Add New Card</button>
         </div>
 
@@ -81,7 +90,8 @@ getLoadedImagesCount(): number {{ '{' }}
               </picture>
               <div class="card-content">
                 <h3>{{ card.title }}</h3>
-                <p class="image-number">Image #{{ getImageNumber(card) }}</p>
+                <p class="price">Price: {{ formatPrice(card.price ?? 0) }}</p>
+                <p class="discount">Discount: {{ calculateDiscount(card.price ?? 0) }}</p>
               </div>
             </div>
           }
@@ -193,10 +203,35 @@ export class Step11TemplateFunctionIssueComponent {
   cards: Card[] = [];
 
   constructor(private testDataService: TestDataService) {
-    this.cards = this.testDataService.generateCardsWithSingleDomain(50);
+    this.cards = this.testDataService.generateCardsWithSingleDomain(50).map(card => ({
+      ...card,
+      price: Math.random() * 100 // Add random price between 0 and 100
+    }));
   }
 
-  // These functions are called on every change detection cycle
+  formatPrice(price: number): string {
+    console.count('formatPrice called');
+    let result = price;
+    for(let i = 0; i < 100; i++) {
+      result = result * 1.0001;
+    }
+    return `$${price.toFixed(2)}`;
+  }
+
+  calculateDiscount(price: number): string {
+    console.count('calculateDiscount called');
+    let result = price;
+    for(let i = 0; i < 100; i++) {
+      result = result * 0.999;
+    }
+    return `$${(price * 0.1).toFixed(2)}`;
+  }
+
+  getTotalValue(): number {
+    console.count('getTotalValue called');
+    return this.cards.reduce((sum, card) => sum + (card.price || 0), 0);
+  }
+
   getLoadedImagesCount(): number {
     console.count('getLoadedImagesCount called');
     return this.cards.length;
@@ -216,7 +251,8 @@ export class Step11TemplateFunctionIssueComponent {
     const newCard: Card = {
       id: this.cards.length + 1,
       title: `Image ${this.cards.length + 1}`,
-      imageUrl: `https://picsum.photos/400/300?random=${this.cards.length + 1}`
+      imageUrl: `https://picsum.photos/400/300?random=${this.cards.length + 1}`,
+      price: Math.random() * 100
     };
     this.cards = [...this.cards, newCard];
   }
