@@ -79,6 +79,8 @@ export class CardsListComponent {{ '{' }}
           not on every keystroke.
         </p>
 
+        <p class="instructions">Learn more about better design of components <a href="https://www.youtube.com/watch?v=f8sA-i6gkGQ&t=680s" target="_blank">here</a>.</p>
+
         <app-search-box (search)="onSearch($event)" />
         <app-cards-list [cards]="filteredCards" />
       </div>
