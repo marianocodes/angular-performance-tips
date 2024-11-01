@@ -76,18 +76,18 @@ import { RouterLink } from '@angular/router';
           <div class="code-example">
             <pre><code>
 // Using eleventy-img during build
-import Image from "@11ty/eleventy-img";
+import Image from "&#64;11ty/eleventy-img";
 
-async function generateImages() {
+async function generateImages() {{'{'}}
   let src = "hero-image.jpg";
-  let stats = await Image(src, {
+  let stats = await Image(src, {{'{'}}
     widths: [300, 600, 900],
     formats: ["avif", "webp", "jpeg"],
     outputDir: "./public/images/"
-  });
+  {{'}'}});
 
   return stats;
-}
+{{'}'}}
 
 // Generated HTML:
 &lt;picture&gt;
