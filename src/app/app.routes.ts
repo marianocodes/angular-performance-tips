@@ -98,5 +98,13 @@ export const routes: Routes = [
     resolve: {
       delay: delayResolver
     }
+  },
+  {
+    path: 'step-21',
+    loadComponent: () => import('./pages/step21-cache-issue/step21-cache-issue.component').then(m => m.Step21CacheIssueComponent)
+  },
+  {
+    path: 'step-22',
+    loadComponent: () => import('./pages/step22-cache-fixed/step22-cache-fixed.component').then(m => m.Step22CacheFixedComponent)
   }
 ];

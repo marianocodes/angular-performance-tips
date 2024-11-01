@@ -15,7 +15,7 @@ import { TestDataService } from '../../services/test-data.service';
         <h1>Step 20: Event Replay During Hydration</h1>
         <nav>
           <a routerLink="/step-19">← Previous</a>
-          <a routerLink="/" class="next">Home</a>
+          <a routerLink="/step-21" class="next">Next Step →</a>
         </nav>
       </header>
 
