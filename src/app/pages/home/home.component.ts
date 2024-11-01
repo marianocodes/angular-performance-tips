@@ -20,7 +20,7 @@ import { RouterLink } from '@angular/router';
         <a routerLink="/intro" class="btn">Start Here</a>
       </div>
 
-      <div class="cards">
+      <!-- <div class="cards">
         <div class="card problematic">
           <h2>❌ Problematic Version</h2>
           <p>This version demonstrates common performance issues:</p>
@@ -42,7 +42,7 @@ import { RouterLink } from '@angular/router';
           </ul>
           <a routerLink="/step-2" class="btn">View Optimized Version</a>
         </div>
-      </div>
+      </div> -->
     </div>
   `,
   styles: [`

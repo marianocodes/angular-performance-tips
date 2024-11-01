@@ -67,6 +67,56 @@ import { RouterLink } from '@angular/router';
           </a>
         </p>
 
+        <div class="additional-info">
+          <h3>Using Build Tools for Image Optimization</h3>
+          <p>
+            Tools like eleventy-img can automatically generate optimized images
+            in multiple formats and sizes during build time:
+          </p>
+          <div class="code-example">
+            <pre><code>
+// Using eleventy-img during build
+import Image from "@11ty/eleventy-img";
+
+async function generateImages() {
+  let src = "hero-image.jpg";
+  let stats = await Image(src, {
+    widths: [300, 600, 900],
+    formats: ["avif", "webp", "jpeg"],
+    outputDir: "./public/images/"
+  });
+
+  return stats;
+}
+
+// Generated HTML:
+&lt;picture&gt;
+  &lt;source
+    type="image/avif"
+    srcset="/images/hero-300.avif 300w,
+            /images/hero-600.avif 600w,
+            /images/hero-900.avif 900w"
+    sizes="(max-width: 900px) 100vw, 900px"&gt;
+  &lt;source
+    type="image/webp"
+    srcset="/images/hero-300.webp 300w,
+            /images/hero-600.webp 600w,
+            /images/hero-900.webp 900w"
+    sizes="(max-width: 900px) 100vw, 900px"&gt;
+  &lt;img
+    src="/images/hero-900.jpeg"
+    srcset="/images/hero-300.jpeg 300w,
+            /images/hero-600.jpeg 600w,
+            /images/hero-900.jpeg 900w"
+    sizes="(max-width: 900px) 100vw, 900px"
+    loading="lazy"
+    decoding="async"
+    alt="Hero image"&gt;
+&lt;/picture&gt;
+            </code></pre>
+          </div>
+        </div>
+
         <div class="image-container">
           <picture>
             <source
@@ -117,6 +167,36 @@ import { RouterLink } from '@angular/router';
               <p>Card {{i}}</p>
             </div>
           }
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <h4>Build-time Optimization</h4>
+            <ul>
+              <li>Automatic format conversion</li>
+              <li>Multiple sizes generation</li>
+              <li>Optimized compression</li>
+              <li>Cache-friendly filenames</li>
+            </ul>
+          </div>
+          <div class="benefit-card">
+            <h4>Format Support</h4>
+            <ul>
+              <li>AVIF for best compression</li>
+              <li>WebP for wide support</li>
+              <li>JPEG/PNG fallback</li>
+              <li>Automatic format selection</li>
+            </ul>
+          </div>
+          <div class="benefit-card">
+            <h4>Performance Benefits</h4>
+            <ul>
+              <li>Reduced bandwidth usage</li>
+              <li>Faster page loads</li>
+              <li>Better Core Web Vitals</li>
+              <li>Improved user experience</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -208,6 +288,55 @@ import { RouterLink } from '@angular/router';
       width: 100%;
       height: auto;
       border-radius: 4px;
+    }
+    .additional-info {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin: 2rem 0;
+    }
+    .additional-info h3 {
+      color: #2d3748;
+      margin-top: 0;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .benefit-card {
+      background-color: #fff;
+      border: 1px solid #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .benefit-card h4 {
+      color: #2d3748;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .benefit-card ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    .benefit-card li {
+      color: #4a5568;
+      margin-bottom: 0.5rem;
+    }
+    .code-example {
+      margin: 1rem 0;
+      background-color: #2d3748;
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    .code-example code {
+      color: #f7fafc;
+      font-family: monospace;
+      font-size: 0.875rem;
     }
   `]
 })

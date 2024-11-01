@@ -42,6 +42,9 @@ import { ApiService } from '../../services/api.service';
 export const appConfig: ApplicationConfig = {{ '{' }}
   providers: [
     provideHttpClient(
+      withFetch()
+    ),
+    provideClientHydration(
       withHttpTransferCacheOptions({{ '{' }}
         includePostRequests: true
       {{ '}' }})

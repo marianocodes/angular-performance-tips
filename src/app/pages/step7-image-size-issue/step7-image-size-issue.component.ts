@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-step7-image-size-issue',
   standalone: true,
-  imports: [CommonModule, RouterLink, NgOptimizedImage],
+  imports: [CommonModule, RouterLink],
   template: `
     <div class="container">
       <header class="header">
@@ -54,7 +54,7 @@ import { RouterLink } from '@angular/router';
 
         <div class="image-container">
           <img
-            ngSrc="https://picsum.photos/1080/720"
+            src="https://picsum.photos/1080/720"
             width="1080"
             height="720"
             alt="Large image"
@@ -70,9 +70,7 @@ import { RouterLink } from '@angular/router';
           @for (i of [1, 2, 3, 4]; track i) {
             <div class="card">
               <img
-                ngSrc="https://picsum.photos/1080/720?random={{i}}"
-                width="1080"
-                height="720"
+                src="https://picsum.photos/1080/720?random={{i}}"
                 alt="Card image {{i}}"
               >
               <p>Card {{i}}</p>
