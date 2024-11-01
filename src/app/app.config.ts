@@ -16,12 +16,12 @@ export const appConfig: ApplicationConfig = {
     // provideClientHydration(
       // withIncrementalHydration()
     // )
-    provideClientHydration(
+    // provideClientHydration(
     //   withIncrementalHydration(),
     //   withEventReplay(),
-      withHttpTransferCacheOptions({
-        includePostRequests: true
-      })
-    )
+      // withHttpTransferCacheOptions({
+      //   includePostRequests: true
+      // })
+    // )
   ]
 };
