@@ -11,11 +11,23 @@ import { RouterLink } from '@angular/router';
 
       <div class="intro-card">
         <h2>🎓 Introduction</h2>
-        <p>Start here to learn about the tools we'll use to track component lifecycle:</p>
+        <p>This course has the goals to give tips you can apply to optimize your Angular Application</p>
+        <p>Start here to learn about tips you can apply to optimize your Angular Application:</p>
         <ul>
           <li>Understanding component lifecycle</li>
           <li>Using the LifecycleLogger directive</li>
           <li>Tracking component creation and destruction</li>
+          <li>DNS Lookups impact</li>
+          <li>Fix layout shifts</li>
+          <li>Intrinsic size and responsive images</li>
+          <li>Modern image formats</li>
+          <li>You're in trouble using functions in the template</li>
+          <li>ChangeDetection is not always the solution</li>
+          <li>Defer problems for later</li>
+          <li>You don't like water but you'll get hydrated today</li>
+          <li>Or at least partially</li>
+          <li>Hold those events</li>
+          <li>Stop asking the same</li>
         </ul>
         <a routerLink="/intro" class="btn">Start Here</a>
       </div>

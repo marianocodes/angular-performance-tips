@@ -37,3 +37,5 @@ https://blog.stackademic.com/demystifying-server-side-rendering-ssr-with-angular
 1. A few times fixed the formatting of the code examples.
 2. Added sizes to images
 3. Fixed the hydration issue in step 17 and 18
+
+NG_HMR_CSTYLES=0 ng serve
