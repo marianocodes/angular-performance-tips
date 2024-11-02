@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { environment } from '../environments/environment';
+
+declare let gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -8,5 +12,19 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet]
 })
 export class AppComponent {
-  title = 'angular-performance-demo';
+  constructor(private router: Router) {
+    if (environment.production) {
+      this.setupAnalytics();
+    }
+  }
+
+  private setupAnalytics(): void {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      gtag('config', environment.googleAnalyticsId, {
+        page_path: event.urlAfterRedirects
+      });
+    });
+  }
 }
