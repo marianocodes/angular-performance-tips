@@ -62,6 +62,7 @@ import { TestDataService } from '../../services/test-data.service';
         <div class="cards-container">
           @for (card of cards; track card.id) {
             <div class="card">
+              <!-- Here -->
               <img
                 [ngSrc]="card.imageUrl"
                 width="320"

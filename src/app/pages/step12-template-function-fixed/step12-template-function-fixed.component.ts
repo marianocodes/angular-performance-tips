@@ -67,6 +67,7 @@ export class PriceFormatterPipe implements PipeTransform {{ '{' }}
         </p>
 
         <div class="stats">
+          <!-- Here -->
           <p>Total Images: {{ totalImages() }}</p>
           <p>Total Value: {{ totalValue() | priceFormatter }}</p>
           <button (click)="addCard()" class="btn">Add New Card</button>
@@ -90,6 +91,7 @@ export class PriceFormatterPipe implements PipeTransform {{ '{' }}
               </picture>
               <div class="card-content">
                 <h3>{{ card.title }}</h3>
+                <!-- Here -->
                 <p class="price">Price: {{ card.price ? (card.price | priceFormatter) : 'N/A' }}</p>
                 <p class="discount">Discount: {{ card.price ? (card.price * 0.1 | priceFormatter) : 'N/A' }}</p>
               </div>
@@ -201,6 +203,7 @@ export class PriceFormatterPipe implements PipeTransform {{ '{' }}
 })
 export class Step12TemplateFunctionFixedComponent {
   // Using signals for reactive state
+  // Here
   cards = signal<Card[]>([]);
 
   totalValue = computed(() => {

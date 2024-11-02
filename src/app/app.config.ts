@@ -14,14 +14,14 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     // provideClientHydration(
-    //   withIncrementalHydration()
+    //   // withIncrementalHydration()
     // )
-    // provideClientHydration(
-    //   withIncrementalHydration(),
-    //   withEventReplay(),
-      // withHttpTransferCacheOptions({
-      //   includePostRequests: true
-      // })
-    // )
+    provideClientHydration(
+      withIncrementalHydration(),
+      withEventReplay(),
+      withHttpTransferCacheOptions({
+        includePostRequests: true
+      })
+    )
   ]
 };

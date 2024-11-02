@@ -9,6 +9,7 @@ import { TestDataService } from '../../services/test-data.service';
   selector: 'app-step13-change-detection-issue',
   standalone: true,
   imports: [CommonModule, RouterLink, NgOptimizedImage, FormsModule],
+  // Here
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="container">
@@ -72,6 +73,7 @@ export class ProblematicComponent {{ '{' }}
         </p>
 
         <div class="search-box">
+          <!-- Here -->
           <input
             type="text"
             [(ngModel)]="searchTerm"
@@ -86,6 +88,7 @@ export class ProblematicComponent {{ '{' }}
         </div>
 
         <div class="cards-container">
+          <!-- Here -->
           @for (card of filteredCards; track card.id) {
             <div class="card">
               <picture>

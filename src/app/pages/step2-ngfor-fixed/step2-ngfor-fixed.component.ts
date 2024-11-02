@@ -41,6 +41,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
         <button (click)="addCard()" class="btn">Add New Card</button>
         <!-- HERE -->
         <div class="cards-container">
+          <!-- Here -->
           @for (card of cards; track card.id) {
             <app-card-item
               [card]="card"
@@ -112,6 +113,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
   `]
 })
 export class Step2NgforFixedComponent {
+  // <!-- HERE -->
   cards: Card[] = [
     {
       id: 1,

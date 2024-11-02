@@ -74,7 +74,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
                 <div class="card-content">
                   <h3>{{ card.title }}</h3>
                   <p class="load-info success">
-                    ✨ Hydrated and Interactive!
+                    ✨ On hover to hydrate!
                   </p>
                   <button
                     class="demo-button"

@@ -10,6 +10,7 @@ import { CardsListComponent } from './cards-list.component';
   selector: 'app-step14-change-detection-fixed',
   standalone: true,
   imports: [CommonModule, RouterLink, SearchBoxComponent, CardsListComponent],
+  // Here
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="container">
@@ -80,7 +81,7 @@ export class CardsListComponent {{ '{' }}
         </p>
 
         <p class="instructions">Learn more about better design of components <a href="https://www.youtube.com/watch?v=f8sA-i6gkGQ&t=680s" target="_blank">here</a>.</p>
-
+        <!-- Here -->
         <app-search-box (search)="onSearch($event)" />
         <app-cards-list [cards]="filteredCards" />
       </div>

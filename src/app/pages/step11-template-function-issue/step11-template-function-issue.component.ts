@@ -67,6 +67,7 @@ calculateDiscount(price: number): string {{ '{' }}
         </p>
 
         <div class="stats">
+          <!-- Here -->
           <p>Total Images: {{ getLoadedImagesCount() }}</p>
           <p>Total Value: {{ formatPrice(getTotalValue()) }}</p>
           <button (click)="addCard()" class="btn">Add New Card</button>
@@ -89,6 +90,7 @@ calculateDiscount(price: number): string {{ '{' }}
                 >
               </picture>
               <div class="card-content">
+                <!-- Here -->
                 <h3>{{ card.title }}</h3>
                 <p class="price">Price: {{ formatPrice(card.price ?? 0) }}</p>
                 <p class="discount">Discount: {{ calculateDiscount(card.price ?? 0) }}</p>
@@ -208,7 +210,7 @@ export class Step11TemplateFunctionIssueComponent {
       price: Math.random() * 100 // Add random price between 0 and 100
     }));
   }
-
+  // Here
   formatPrice(price: number): string {
     console.count('formatPrice called');
     let result = price;
