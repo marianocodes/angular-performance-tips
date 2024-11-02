@@ -11,8 +11,7 @@ import { RouterLink } from '@angular/router';
 
       <div class="intro-card">
         <h2>🎓 Introduction</h2>
-        <p>This course has the goals to give tips you can apply to optimize your Angular Application</p>
-        <p>Start here to learn about tips you can apply to optimize your Angular Application:</p>
+        <p>Start here to learn about tips that you can apply to optimize your Angular Application:</p>
         <ul>
           <li>Understanding component lifecycle</li>
           <li>Using the LifecycleLogger directive</li>

@@ -53,25 +53,25 @@ import { RouterLink } from '@angular/router';
           <div class="format">
             <h3>JPEG Format (Legacy)</h3>
             <img
-              ngSrc="assets/demo-image.jpg"
+              ngSrc="images/jpeg.jpeg"
               width="800"
               height="400"
               alt="JPEG image"
               priority="true"
             >
-            <p class="size-info">Original JPEG: ~200KB</p>
+            <p class="size-info">Original JPEG: ~64KB</p>
           </div>
 
           <div class="format">
             <h3>PNG Format (Legacy)</h3>
             <img
-              ngSrc="assets/demo-image.png"
+              ngSrc="images/png.png"
               width="800"
               height="400"
               alt="PNG image"
               priority="true"
             >
-            <p class="size-info">PNG version: ~500KB</p>
+            <p class="size-info">PNG version: ~276KB</p>
           </div>
         </div>
       </div>

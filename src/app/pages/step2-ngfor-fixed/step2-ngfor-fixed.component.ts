@@ -39,7 +39,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
       <div class="demo">
         <button (click)="replaceCards()" class="btn">Replace cards </button>
         <button (click)="addCard()" class="btn">Add New Card</button>
-
+        <!-- HERE -->
         <div class="cards-container">
           @for (card of cards; track card.id) {
             <app-card-item

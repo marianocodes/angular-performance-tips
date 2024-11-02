@@ -57,6 +57,56 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
 
+      <div class="additional-info">
+          <h3>Using Build Tools for Image Optimization</h3>
+          <p>
+            Tools like eleventy-img can automatically generate optimized images
+            in multiple formats and sizes during build time:
+          </p>
+          <div class="code-example">
+            <pre><code>
+// Using eleventy-img during build
+import Image from "&#64;11ty/eleventy-img";
+
+async function generateImages() {{'{'}}
+  let src = "hero-image.jpg";
+  let stats = await Image(src, {{'{'}}
+    widths: [300, 600, 900],
+    formats: ["avif", "webp", "jpeg"],
+    outputDir: "./public/images/"
+  {{'}'}});
+
+  return stats;
+{{'}'}}
+
+// Generated HTML:
+&lt;picture&gt;
+  &lt;source
+    type="image/avif"
+    srcset="/images/hero-300.avif 300w,
+            /images/hero-600.avif 600w,
+            /images/hero-900.avif 900w"
+    sizes="(max-width: 900px) 100vw, 900px"&gt;
+  &lt;source
+    type="image/webp"
+    srcset="/images/hero-300.webp 300w,
+            /images/hero-600.webp 600w,
+            /images/hero-900.webp 900w"
+    sizes="(max-width: 900px) 100vw, 900px"&gt;
+  &lt;img
+    src="/images/hero-900.jpeg"
+    srcset="/images/hero-300.jpeg 300w,
+            /images/hero-600.jpeg 600w,
+            /images/hero-900.jpeg 900w"
+    sizes="(max-width: 900px) 100vw, 900px"
+    loading="lazy"
+    decoding="async"
+    alt="Hero image"&gt;
+&lt;/picture&gt;
+            </code></pre>
+          </div>
+        </div>
+
       <div class="demo">
         <p class="instructions">
           Compare these modern formats in the Network tab. Notice the significantly smaller file sizes
@@ -68,40 +118,54 @@ import { RouterLink } from '@angular/router';
             <h3>AVIF Format (Best)</h3>
             <picture>
               <source
-                srcset="assets/demo-image.avif"
+                srcset="images/avif.avif"
                 type="image/avif"
               >
-              <source
-                srcset="assets/demo-image.webp"
+              <!-- <source
+                srcset="images/webp.webp"
                 type="image/webp"
               >
               <img
-                ngSrc="assets/demo-image.jpg"
-                width="800"
+                ngSrc="images/.jpeg"
+                width="400"
                 height="400"
-                alt="AVIF image"
+                alt="JPEG image"
+                priority="true"
+              > -->
+            </picture>
+            <img
+                ngSrc="images/avif.avif"
+                width="400"
+                height="400"
+                alt="JPEG image"
                 priority="true"
               >
-            </picture>
-            <p class="size-info">AVIF version: ~50KB</p>
+            <p class="size-info">AVIF version: ~18KB</p>
           </div>
 
           <div class="format">
             <h3>WebP Format (Good)</h3>
-            <picture>
+            <!-- <picture>
               <source
-                srcset="assets/demo-image.webp"
+                srcset="images/webp.webp"
                 type="image/webp"
               >
               <img
-                ngSrc="assets/demo-image.jpg"
-                width="800"
+                ngSrc="images/jpeg.jpeg"
+                width="400"
                 height="400"
                 alt="WebP image"
                 priority="true"
               >
-            </picture>
-            <p class="size-info">WebP version: ~100KB</p>
+            </picture> -->
+            <img
+              ngSrc="images/avif.avif"
+              width="400"
+              height="400"
+              alt="JPEG image"
+              priority="true"
+            >
+            <p class="size-info">WebP version: ~34KB</p>
           </div>
         </div>
 

@@ -31,7 +31,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
     *ngFor="let card of cards"
     [card]="card"
     appLifecycleLogger
-  &gt;&lt;/app-card-item&gt;
+  /&gt;
           </code></pre>
         </div>
       </div>
@@ -110,6 +110,7 @@ import { LifecycleLoggerDirective } from '../../directives/lifecycle-logger.dire
   `]
 })
 export class Step1NgforIssueComponent {
+  // <!-- HERE -->
   cards: Card[] = [
     {
       id: 1,
