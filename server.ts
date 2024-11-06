@@ -30,14 +30,14 @@ export function app(): express.Express {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine
-      .render({
+      .handle({
         bootstrap: bootstrap as any,
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
       } as any)
-      .then((html) => res.send(html))
+      .then((html: any) => res.send(html))
       .catch((err: any) => next(err));
   });
 
